@@ -1,15 +1,17 @@
-package com.purcase.dxp.mixin;
+package org.purcase.dxp.mixin;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
+import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+@Debug(export = true)
 @Mixin(PlayerEntity.class)
 public abstract class PlayerMixin extends LivingEntity
 {
@@ -21,8 +23,7 @@ public abstract class PlayerMixin extends LivingEntity
 	}
 
 	@Inject(method = "getXpToDrop", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/player/PlayerEntity;experienceLevel:I", shift = At.Shift.BEFORE), cancellable = true)
-	private void getXpToDropMixin(CallbackInfoReturnable<Integer> cir)
-	{
+	private void getXpToDropMixin(CallbackInfoReturnable<Integer> cir) {
 		int level = this.experienceLevel;
 		if (level < 17) {
 			cir.setReturnValue((int) ((level * level + 6 * level) * 0.6));
@@ -33,5 +34,6 @@ public abstract class PlayerMixin extends LivingEntity
 		if (level > 31) {
 			cir.setReturnValue((int) ((int) (4.5 * level * level - 162.5 * level + 2220) * 0.8));
 		}
+		cir.cancel();
 	}
 }

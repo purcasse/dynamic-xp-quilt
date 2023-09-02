@@ -1,7 +1,7 @@
 {
 	"schema_version": 1,
 	"quilt_loader": {
-		"group": "com.purcase",
+		"group": "org.purcase",
 		"id": "dxp",
 		"version": "${version}",
 		"metadata": {
@@ -18,7 +18,7 @@
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": "com.purcase.dxp.DynamicXp"
+			"init": "org.purcase.dxp.DynamicXp"
 		},
 		"depends": [
 			{

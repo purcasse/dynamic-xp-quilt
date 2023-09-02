@@ -1,4 +1,4 @@
-package com.purcase.dxp;
+package org.purcase.dxp;
 
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
