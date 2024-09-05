@@ -9,6 +9,6 @@ public class DynamicXp implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("Dynamic XP");
 	@Override
 	public void onInitialize(ModContainer mod) {
-		LOGGER.info("Successfully loaded nothing for {}!", mod.metadata().name());
+		LOGGER.info("Loaded {}", mod.metadata().name());
 	}
 }
